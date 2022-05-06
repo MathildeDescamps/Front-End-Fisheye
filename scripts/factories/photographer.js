@@ -1,3 +1,4 @@
+//Cette fonction reçoit un paramètre 'data' correspondant aux infos 
 function photographerFactory(data) {
     const { name, portrait } = data;
 
@@ -15,3 +16,4 @@ function photographerFactory(data) {
     }
     return { name, picture, getUserCardDOM }
 }
+export default photographerFactory;
