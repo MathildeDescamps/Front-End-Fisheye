@@ -1,11 +1,48 @@
-#contact_modal {
-    display: none;
-}
-
-.photograph-header {
+/* PHOTOGRAPHER HEADER */
+.photographer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #FAFAFA;
+    border-radius: 5px;
     height: 300px;
     margin: 0 100px;
+    padding: 70px 50px;
+}
+
+.photographer-header h2 {
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 83px;
+    color: #D3573C;
+    margin: 0;
+}
+
+.photographer-header .location {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 31px;
+    color: #901C1C;
+    margin-top: 12px;
+}
+
+.photographer-header .tagline {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    color: #525252;
+}
+
+.photographer-header img {
+    max-width: 200px;
+    max-height: 200px;
+    min-width: 200px;
+    min-height: 200px;
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    order: 3;
 }
 
 .contact_button {
@@ -19,6 +56,76 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    order: 2;
+}
+
+/* PHOTOGRAPHER REALISATIONS */
+
+.photographer-realisations {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin: 0 100px;
+    padding: 70px 50px;
+}
+
+.photographer-realisations .realisation-wrapper {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.photographer-realisations .realisation-wrapper .realisation-image,
+.photographer-realisations .realisation-wrapper .realisation-video {
+    height: 300px;
+    max-height: 300px;
+    width: 100%;
+}
+.photographer-realisations .realisation-wrapper .realisation-image {
+    background-position: center!important;
+    background-repeat: no-repeat!important;
+    background-size: cover!important;
+}
+
+.photographer-realisations .realisation-wrapper .realisation-video {
+    object-fit: cover;
+}
+
+.photographer-realisations .realisation-wrapper .rea-infos {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.photographer-realisations .realisation-wrapper .rea-infos {
+    color: #911C1C;
+    font-size: 24px;
+    line-height: 31px;
+}
+
+.photographer-realisations .realisation-wrapper .rea-infos .rea-title {
+    font-weight: 400;
+}
+
+.photographer-realisations .realisation-wrapper .rea-infos .rea-likes {
+    font-weight: 500;
+}
+
+/* CONTACT FORM MODAL */
+
+#contact_modal {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(196, 196, 196, 0.4);
+    position: absolute;
+    z-index: 98;
+    top: 0;
+    left: 0;
 }
 
 .modal {
@@ -30,22 +137,29 @@
     align-items: center;
     justify-content: space-between;
     padding: 35px;
-    margin: auto;
+    position: absolute;
+    z-index: 100;
+    margin-left: calc(25% - 35px);
+    top: 62px;
 }
 
 .modal header {
     justify-content: space-between;
+    align-items: flex-start;
     width: 100%;
+    height: fit-content;
 }
 
 .modal header img {
     cursor: pointer;
+    margin-top: 20px;
 }
 
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
+    text-align: left;
+    margin: 0 0 25px 0;
 }
 
 form {
@@ -68,9 +182,78 @@ form div {
     margin-bottom: 26px;
 }
 
-form input {
+form input, 
+form textarea {
     width: 100%;
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+form textarea {
+    min-height: 150px;
+}
+
+/* LIGHTBOX MODAL */
+.lightbox-container {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+}
+
+.lightbox-container .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: 90vh;
+}
+
+.lightbox-container .close {
+    position: absolute;
+    top: 5vh;
+    right: 5vw;
+}
+
+.lightbox-container .close:hover,
+.lightbox-container .controls .left:hover,
+.lightbox-container .controls .right:hover {
+    cursor: pointer;
+}
+
+.lightbox-container .controls {
+    width: 90vw;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lightbox-container .wrapper .image,
+.lightbox-container .wrapper .video {
+    width: 90%;
+    height: 100%;
+    background-size: cover!important;
+    background-position: center!important;
+    background-repeat: no-repeat!important;
+    object-fit: cover;
+    object-position: center;
+}
+
+.lightbox-container .wrapper .title {
+    width: 90%;
+    justify-self: flex-start;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 31px;
+    color: #911C1C;
+    margin: 15px 0 0 0;
 }

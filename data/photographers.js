@@ -1,4 +1,4 @@
-const data = {
+let data = {
 	"photographers": [
 		{
 			"name": "Mimi Keel",
@@ -494,7 +494,7 @@ const data = {
 		{
 			"id": 952343423,
 			"photographerId": 930,
-			"title": "Tricks in te air",
+			"title": "Tricks in the air",
 			"video": "Sport_Tricks_in_the_air.mp4",
 			"likes": 150,
 			"date": "2018-02-30",
