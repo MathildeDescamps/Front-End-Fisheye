@@ -22,10 +22,10 @@ let photographerMedias = [];
  }
 
 //Get photographer's medias
-export async function getMedias(photographer){
+export async function getMedias(){
 
     data.media.forEach((media) => {
-        if(media.photographerId === currentPhotographer.id) {
+        if((media.photographerId === currentPhotographer.id) && (!photographerMedias.includes(media))) {
             photographerMedias.push(media);
         }
     })
@@ -39,13 +39,13 @@ async function displayData(photographer) {
     photographerModel.getPhotographerPresentationDOM();
     //Pour chaque média ayant photographerId == id, on appelle mediaFactory.
     photographerMedias.forEach(media => {
-        let realisationModel = mediaFactory(media); 
+        mediaFactory(media); 
     });
 };
 
 async function init() {
     let photographer = await getPhotographerData();
-    let medias = await getMedias(photographer);
+    await getMedias(photographer);
     displayData(photographer);
 };
 

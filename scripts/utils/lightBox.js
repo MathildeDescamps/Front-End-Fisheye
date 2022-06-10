@@ -7,14 +7,16 @@ let nextArrow = document.querySelector(".lightbox-container .controls .right");
 let prevArrow = document.querySelector(".lightbox-container .controls .left");
 let lightboxWrapper = document.querySelector(".lightbox-container .wrapper");
 
-let medias;
+let medias = [];
 let media;
+
+console.log(medias);
 
 export async function openLightbox(id, photographerId, title, clickedMedia) {
 
     //On récupère les médias du photographe
     medias = await getMedias(photographerId);
-
+    console.log(medias);
     //On récupère le média qui a été cliqué
     media = medias.find(media => media.id === id);
 
@@ -39,6 +41,7 @@ export async function openLightbox(id, photographerId, title, clickedMedia) {
     //On ouvre la lightbox
     lightboxContainer.style.display = "flex";  
 
+    //Naviguer dans la lightbox avec les flèches du clavier
     document.addEventListener('keydown', function(event) {
         if(lightboxContainer.style.display === "flex") {
             switch (event.key) {
@@ -48,28 +51,40 @@ export async function openLightbox(id, photographerId, title, clickedMedia) {
                 case "ArrowRight":
                     showNextMedia();
                 break;
+                case "Escape":
+                    lightboxContainer.style.display = "none";
+                break;
             }
         }
     });
 
     //Au click sur la croix, on faire la lightbox
     closeBtn.addEventListener("click", function() {
-        lightboxContainer.style.display = "none";
+        if(lightboxContainer.style.display === "flex") {
+            lightboxContainer.style.display = "none";
+        }
     })
 
 }
 
 async function showNextMedia() {
     let index = medias.indexOf(media);
+
+    if(index === (medias.length -1)) {
+        index = -1;
+    }
+
     if(medias[index + 1].image) {   
         lightboxWrapper.innerHTML = `
             <div class="image" id="${medias[index + 1].id}" style="background: url('assets/medias/${medias[index + 1].image}')"></div>
+            <p class="title" >${medias[index + 1].title}</p>
         `;
     } else if (medias[index + 1 ].video) {
         lightboxWrapper.innerHTML = `
             <video class="video" id="${medias[index + 1].id}" controls>
                 <source src="assets/medias/${medias[index + 1].video}" type="video/mp4" >
             </video>
+            <p class="title" >${medias[index + 1].title}</p>
         `;
     }
     media = medias[index + 1];
@@ -78,18 +93,21 @@ async function showNextMedia() {
 async function showPrevMedia() {
 
     let index = medias.indexOf(media);
-    if(index === 0) {
+
+    if(index - 1 === -1) {
         index = medias.length;
     }
     if(medias[index - 1].image) {   
         lightboxWrapper.innerHTML = `
             <div class="image" id="${medias[index - 1].id}" style="background: url('assets/medias/${medias[index - 1].image}')"></div>
+            <p class="title" >${medias[index - 1].title}</p>
         `;
     } else if (medias[index - 1 ].video) {
         lightboxWrapper.innerHTML = `
             <video class="video" id="${medias[index - 1].id}" controls>
                 <source src="assets/medias/${medias[index - 1].video}" type="video/mp4" >
             </video>
+            <p class="title" >${medias[index - 1].title}</p>
         `;
     }
     media = medias[index - 1];
