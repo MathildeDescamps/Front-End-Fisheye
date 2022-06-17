@@ -2,7 +2,7 @@ import data from "../../data/photographers.js";
 import photographerFactory from "../factories/photographer.js";
 
 //Data fetching
-async function getPhotographers() {
+function getPhotographers() {
     let photographers = data.photographers;
     return ({
         photographers: [...photographers]
@@ -10,7 +10,7 @@ async function getPhotographers() {
 }
 
 //Data displaying
-async function displayData(photographers) {
+function displayData(photographers) {
     let photographersSection = document.querySelector(".photographer_section");
     photographers.forEach((photographer) => {
         let photographerModel = photographerFactory(photographer);

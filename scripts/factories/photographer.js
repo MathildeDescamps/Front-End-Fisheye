@@ -1,3 +1,5 @@
+import {getMedias} from '../pages/photographer.js';
+
 //Html card is created for each photographer, to display their informations
 function photographerFactory(data) {
 
@@ -12,10 +14,10 @@ function photographerFactory(data) {
         url.searchParams.append("id", id);
         let linkUrl = url.href;
         link.setAttribute("href", linkUrl);
+        link.setAttribute("aria-label", name);
         let article = document.createElement( 'article' );
         let img = document.createElement( 'img' );
         img.setAttribute("src", picture);
-        img.setAttribute("alt", 'Photo de ' + name);
         let h2 = document.createElement( 'h2' );
         h2.textContent = name;
         let paragraph1 = document.createElement('p');
@@ -56,7 +58,21 @@ function photographerFactory(data) {
         return (photographerHeader)
     }
 
+    async function getPhotographerTotalLikes() {
+        let likes = 0;
+        let medias = await getMedias();
+        medias.forEach((media) => {
+            likes = likes + media.likes;
+        });
+        document.querySelector(".corner-insert .likes-wrapper .likes").innerHTML = `
+            ${likes}
+        `;
+        document.querySelector(".corner-insert .tariff").innerHTML = `
+            ${price}€ / jour
+        `;
+    }
+
     //We return the infos and the function, to be able to use them in pages/index.js
-    return { name, picture, city, country, tagline, price, id, getUserCardDOM, getPhotographerPresentationDOM }
+    return { name, picture, city, country, tagline, price, id, getUserCardDOM, getPhotographerPresentationDOM, getPhotographerTotalLikes }
 }
 export default photographerFactory;

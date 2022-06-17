@@ -59,6 +59,29 @@
     order: 2;
 }
 
+/* FILTER */
+.filter-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: fit-content;
+    margin: 20px 100px;
+    margin-bottom: 0;
+}
+.filter-wrapper .input-label {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+    padding-right: 15px;
+}
+#filter {
+    background-color: #911C1C;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+}
+
 /* PHOTOGRAPHER REALISATIONS */
 
 .photographer-realisations {
@@ -66,7 +89,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
     margin: 0 100px;
-    padding: 70px 50px;
+    padding: 70px 0px;
 }
 
 .photographer-realisations .realisation-wrapper {
@@ -83,6 +106,7 @@
     height: 300px;
     max-height: 300px;
     width: 100%;
+    border-radius: 5px;
 }
 .photographer-realisations .realisation-wrapper .realisation-image {
     background-position: center!important;
@@ -113,6 +137,10 @@
 
 .photographer-realisations .realisation-wrapper .rea-infos .rea-likes {
     font-weight: 500;
+}
+
+.photographer-realisations .realisation-wrapper .rea-infos .rea-likes .likes-icon:hover {
+    cursor: pointer;
 }
 
 /* CONTACT FORM MODAL */
@@ -246,6 +274,7 @@ form textarea {
     background-repeat: no-repeat!important;
     object-fit: cover;
     object-position: center;
+    border-radius: 5px;
 }
 
 .lightbox-container .wrapper .title {
@@ -256,4 +285,31 @@ form textarea {
     line-height: 31px;
     color: #911C1C;
     margin: 15px 0 0 0;
+}
+
+/* CORNER INSERT */
+.corner-insert {
+    position: fixed;
+    bottom: -10px;
+    right: 35px;
+    width: fit-content;
+    background-color: #DB8876;
+    border-radius: 5px;
+    padding: 10px 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 350px;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.corner-insert .likes-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.corner-insert .likes-wrapper  svg {
+    margin-left: 5px;
 }

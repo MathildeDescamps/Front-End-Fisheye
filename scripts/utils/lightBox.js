@@ -10,13 +10,11 @@ let lightboxWrapper = document.querySelector(".lightbox-container .wrapper");
 let medias = [];
 let media;
 
-console.log(medias);
-
 export async function openLightbox(id, photographerId, title, clickedMedia) {
 
     //On récupère les médias du photographe
     medias = await getMedias(photographerId);
-    console.log(medias);
+
     //On récupère le média qui a été cliqué
     media = medias.find(media => media.id === id);
 
@@ -115,7 +113,10 @@ async function showPrevMedia() {
 }
 
 //Au click sur la flèche de droite
-nextArrow.addEventListener("click", showNextMedia);
-
+if(nextArrow) {
+    nextArrow.addEventListener("click", showNextMedia);
+}
 //Au click sur la flèche de gauche
-prevArrow.addEventListener("click", showPrevMedia);
+if(prevArrow) {
+    prevArrow.addEventListener("click", showPrevMedia);
+}
