@@ -45,13 +45,13 @@ function photographerFactory(data) {
         let headerLeft = document.createElement("div");
         headerLeft.setAttribute("class", "header-left");
         headerLeft.innerHTML = `
-            <h2>${name}</h2>
+            <h1>${name}</h1>
             <p class="location">${city}, ${country}</p>
             <p class="tagline">${tagline}</p>
         `;
         let img = document.createElement( 'img' );
         img.setAttribute("src", picture);
-        img.setAttribute("alt", 'Photo de ' + name);
+        img.setAttribute("alt", name);
         photographerHeader.appendChild(headerLeft);
         photographerHeader.appendChild(img);
 

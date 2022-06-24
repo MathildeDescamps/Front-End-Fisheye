@@ -10,7 +10,7 @@
     padding: 70px 50px;
 }
 
-.photographer-header h2 {
+.photographer-header h1 {
     font-weight: 400;
     font-size: 64px;
     line-height: 83px;
@@ -222,6 +222,12 @@ form textarea {
 
 form textarea {
     min-height: 150px;
+}
+
+#contact_modal .modal img {
+    position: absolute;
+    top: 50px;
+    right: 35px;
 }
 
 /* LIGHTBOX MODAL */

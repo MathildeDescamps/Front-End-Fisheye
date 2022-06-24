@@ -1,10 +1,14 @@
 function displayModal() {
     let modal = document.getElementById("contact_modal");
-    let photographerName = document.querySelector(".photographer-header h2").innerText;
+    let photographerName = document.querySelector(".photographer-header h1").innerText;
     let contactMeText = document.querySelector(".modal header h2");
+    let closeBtn = document.querySelector("#contact_modal .modal img");
     contactMeText.innerHTML = `Contactez-moi <br/> ${photographerName}`;
+    modal.setAttribute("aria-label", "Contact me "+ photographerName);
+    let firstNameInput = document.querySelector("#contact_modal .modal form .firstname-input");
 	modal.style.display = "flex";
-    let btn = document.querySelector("#contact_modal .modal form .contact_button");
+    firstNameInput.focus();
+    let btn = document.querySelector("#contact_modal .modal form .send");
     if(btn) {
         btn.addEventListener("click", function(e) {
             e.preventDefault();
@@ -20,6 +24,14 @@ function displayModal() {
             }, 2000);
         })
     }
+    document.addEventListener('keypress', function (e) {
+        if(closeBtn === document.activeElement) {
+            if (e.key === 'Enter') {
+                let modal = document.getElementById("contact_modal");
+                modal.style.display = "none";
+            }
+        }
+    });
 }
 
 function closeModal() {

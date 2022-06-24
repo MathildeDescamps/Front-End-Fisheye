@@ -86,6 +86,35 @@ function handleLikes () {
                 }
             }
         })
+        document.addEventListener('keypress', function (e) {
+            if(likeBtn === document.activeElement) {
+                if (e.key === 'Enter') {
+                    if(isLiked === false) {
+                        let totalLikes = parseInt(document.querySelector(".corner-insert .likes-wrapper .likes").innerText);
+                        totalLikes = totalLikes + 1;
+                        document.querySelector(".corner-insert .likes-wrapper .likes").innerHTML = `
+                            ${totalLikes}
+                        `;
+                        let currentLikes = likeBtn.parentElement.getElementsByClassName('likes-nb')[0];
+                        currentLikes.innerText = parseInt(currentLikes.innerText) + 1;
+                        isLiked = true;
+                    } else if (isLiked === true) {
+                        let totalLikes = parseInt(document.querySelector(".corner-insert .likes-wrapper .likes").innerText);
+                        if (totalLikes > 0) {
+                            totalLikes = totalLikes - 1;
+                            document.querySelector(".corner-insert .likes-wrapper .likes").innerHTML = `
+                                ${totalLikes}
+                            `;
+                            let currentLikes = likeBtn.parentElement.getElementsByClassName('likes-nb')[0];
+                            if(parseInt(currentLikes.innerText) > 0) {
+                                currentLikes.innerText = parseInt(currentLikes.innerText) - 1;
+                            }
+                            isLiked = false;
+                        }
+                    }
+                }
+            }
+        })
     })
 }
 
