@@ -91,7 +91,8 @@ function handleLikes () {
 
 /* FILTER */
 let filter = document.getElementById('filter');
-filter.addEventListener('change', function() {
+if(filter) {
+    filter.addEventListener('change', function() {
     let realisations = document.querySelector(".photographer-realisations");
     realisations.innerHTML = "";
     if(this.value === "likes") {
@@ -121,3 +122,4 @@ filter.addEventListener('change', function() {
     });
     handleLikes();
 });
+}
