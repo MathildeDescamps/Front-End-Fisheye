@@ -1,3 +1,12 @@
+/* eslint-disable brace-style */
+/* eslint-disable keyword-spacing */
+/* eslint-disable max-len */
+/* eslint-disable prefer-const */
+/* eslint-disable indent */
+/* eslint-disable padded-blocks */
+/* eslint-disable require-jsdoc */
+/* eslint-disable quotes */
+/* eslint-disable object-curly-spacing */
 import { openLightbox } from "../utils/lightBox.js";
 
 function mediaFactory(data) {
@@ -9,20 +18,20 @@ function mediaFactory(data) {
     let reaWrapper = document.createElement("div");
     reaWrapper.classList.add("realisation-wrapper");
 
-    if(image){
+    if(image) {
         let src = `assets/medias/${image}`;
         reaWrapper.innerHTML = `
             <div style="background: url('${src}');" id="realisation-${id}" class="realisation realisation-image" aria-label='${title}, closeup view' tabindex="0"></div>
         `;
-    } 
-    if(video){
+    }
+    if(video) {
         let src = `assets/medias/${video}`;
         reaWrapper.innerHTML = `
             <video id="realisation-${id}" class="realisation realisation-video" height="300px" controls aria-label='${title}, closeup view' tabindex="0">
                 <source src=${src} type="video/mp4">
             </video>
         `;
-    } 
+    }
 
     let reaInfos = document.createElement("div");
     reaInfos.setAttribute("class", "rea-infos");
@@ -50,7 +59,7 @@ function mediaFactory(data) {
         }
     });
 
-    document.addEventListener('keypress', function (e) {
+    document.addEventListener('keypress', function(e) {
         if(rea === document.activeElement) {
             if (e.key === 'Enter') {
                 if(image) {

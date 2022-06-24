@@ -1,26 +1,30 @@
+/* eslint-disable max-len */
+/* eslint-disable indent */
+/* eslint-disable require-jsdoc */
+/* eslint-disable quotes */
 import data from "../../data/photographers.js";
 import photographerFactory from "../factories/photographer.js";
 
-//Data fetching
+// Data fetching
 function getPhotographers() {
-    let photographers = data.photographers;
+    const photographers = data.photographers;
     return ({
-        photographers: [...photographers]
-    })
+        photographers: [...photographers],
+    });
 }
 
-//Data displaying
+// Data displaying
 function displayData(photographers) {
-    let photographersSection = document.querySelector(".photographer_section");
+    const photographersSection = document.querySelector(".photographer_section");
     photographers.forEach((photographer) => {
-        let photographerModel = photographerFactory(photographer);
-        let userCardDOM = photographerModel.getUserCardDOM();
+        const photographerModel = photographerFactory(photographer);
+        const userCardDOM = photographerModel.getUserCardDOM();
         photographersSection.appendChild(userCardDOM);
     });
 };
 
 async function init() {
-    let { photographers } = await getPhotographers();
+    const {photographers} = await getPhotographers();
     displayData(photographers);
 };
 

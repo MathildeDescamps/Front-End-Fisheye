@@ -1,13 +1,18 @@
+/* eslint-disable max-len */
+/* eslint-disable quotes */
+/* eslint-disable object-curly-spacing */
+/* eslint-disable prefer-const */
+/* eslint-disable require-jsdoc */
+/* eslint-disable indent */
 import {getMedias} from '../pages/photographer.js';
 
-//Html card is created for each photographer, to display their informations
+//  Html card is created for each photographer, to display their informations
 function photographerFactory(data) {
-
     let { name, portrait, city, country, tagline, price, id } = data;
 
     let picture = `assets/photographers/${portrait}`;
 
-    //Photographer's card creation
+    // Photographer's card creation
     function getUserCardDOM() {
         let link = document.createElement('a');
         let url = new URL(document.location.origin + '/photographer.html');
@@ -38,9 +43,8 @@ function photographerFactory(data) {
         return (article);
     }
 
-    //Photographer's card creation
+    // Photographer's card creation
     function getPhotographerPresentationDOM() {
-
         let photographerHeader = document.querySelector(".photographer-header");
         let headerLeft = document.createElement("div");
         headerLeft.setAttribute("class", "header-left");
@@ -55,7 +59,7 @@ function photographerFactory(data) {
         photographerHeader.appendChild(headerLeft);
         photographerHeader.appendChild(img);
 
-        return (photographerHeader)
+        return (photographerHeader);
     }
 
     async function getPhotographerTotalLikes() {
@@ -72,7 +76,7 @@ function photographerFactory(data) {
         `;
     }
 
-    //We return the infos and the function, to be able to use them in pages/index.js
-    return { name, picture, city, country, tagline, price, id, getUserCardDOM, getPhotographerPresentationDOM, getPhotographerTotalLikes }
+    // We return the infos and the function, to be able to use them in pages/index.js
+    return { name, picture, city, country, tagline, price, id, getUserCardDOM, getPhotographerPresentationDOM, getPhotographerTotalLikes };
 }
 export default photographerFactory;
