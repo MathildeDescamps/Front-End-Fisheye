@@ -15,7 +15,7 @@ function photographerFactory(data) {
     // Photographer's card creation
     function getUserCardDOM() {
         let link = document.createElement('a');
-        let url = new URL(document.location.origin + '/photographer.html');
+        let url = new URL(document.location.origin + '/Front-End-Fisheye/photographer.html');
         url.searchParams.append("id", id);
         let linkUrl = url.href;
         link.setAttribute("href", linkUrl);
