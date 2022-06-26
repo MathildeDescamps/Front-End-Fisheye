@@ -18,7 +18,7 @@
         <button class="contact_button" onclick="displayModal()" aria-label="Contact me">Contactez-moi</button>
       </div>
       <div class="filter-wrapper">
-        <label class="input-label">Trier par</label>
+        <label for="filter" class="input-label">Trier par</label>
         <select id="filter" aria-label="Order by">
           <option value="likes">Popularité</option>
           <option value="date">Date</option>
@@ -54,14 +54,14 @@
         </header>
 				<form>
 					<div>
-						<label>Prénom</label>
-						<input class="firstname-input" aria-label="First name" />
-            <label>Nom</label>
-						<input class="lastname-input" aria-label="Last name" />
-            <label>Email</label>
-						<input class="email-input" type="email" aria-label="Email" />
-            <label>Votre message</label>
-						<textarea class="message-input" aria-label="Your message"></textarea>
+						<label for="first-name">Prénom</label>
+						<input id="first-name" class="firstname-input" aria-label="First name" />
+            <label for="last-name">Nom</label>
+						<input id="last-name" class="lastname-input" aria-label="Last name" />
+            <label for="email">Email</label>
+						<input id="email" class="email-input" type="email" aria-label="Email" />
+            <label for="message">Votre message</label>
+						<textarea id="message" class="message-input" aria-label="Your message"></textarea>
 					</div>
           <button class="contact_button send" aria-label="Send">Envoyer</button>
 				</form>
