@@ -18,21 +18,24 @@ function mediaFactory(data) {
     let reaWrapper = document.createElement("div");
     reaWrapper.classList.add("realisation-wrapper");
 
+    // If the media is an image, we display an image
     if(image) {
         let src = `assets/medias/${image}`;
         reaWrapper.innerHTML = `
             <div style="background: url('${src}');" id="realisation-${id}" class="realisation realisation-image" aria-label='${title}, closeup view' tabindex="0"></div>
         `;
     }
+    // If the media is a video, we display a video thumbnail
     if(video) {
         let src = `assets/medias/${video}`;
         reaWrapper.innerHTML = `
-            <video id="realisation-${id}" class="realisation realisation-video" height="300px" controls aria-label='${title}, closeup view' tabindex="0">
+            <video id="realisation-${id}" class="realisation realisation-video" height="300px" aria-label='${title}, closeup view' tabindex="0">
                 <source src=${src} type="video/mp4">
             </video>
         `;
     }
 
+    // We create the title + likes block
     let reaInfos = document.createElement("div");
     reaInfos.setAttribute("class", "rea-infos");
     reaInfos.innerHTML = `
@@ -50,6 +53,7 @@ function mediaFactory(data) {
 
     let rea = document.querySelector(`.realisation-wrapper #realisation-${id}`);
 
+    // If the user clicks on a media, the lightbox opens
     rea.addEventListener("click", function() {
         if(image) {
             openLightbox(id, photographerId, title, image);
@@ -58,7 +62,7 @@ function mediaFactory(data) {
             openLightbox(id, photographerId, title, video);
         }
     });
-
+    // Same thing for keyboard navigation
     document.addEventListener('keypress', function(e) {
         if(rea === document.activeElement) {
             if (e.key === 'Enter') {
